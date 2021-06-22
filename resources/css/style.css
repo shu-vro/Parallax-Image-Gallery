@@ -1,0 +1,156 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", "Gill Sans", "Gill Sans MT", Calibri,
+        "Trebuchet MS", sans-serif;
+    font-weight: 500;
+    background: #000;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    filter: blur(3px);
+    opacity: 0.2;
+}
+
+.bg::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(black, transparent);
+    width: 100vw;
+    height: 100vh;
+}
+
+.bg::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    height: 300%;
+    width: 300%;
+    background: repeating-linear-gradient(
+            #000 0% 4%,
+            #fff 4% 98%,
+            #fff 98% 100%
+        ),
+        repeating-linear-gradient(90deg, #000 0% 4%, #fff 4% 98%, #fff 98% 100%);
+    background-size: 100px 100px;
+    background-blend-mode: difference;
+    transform-style: preserve-3d;
+}
+
+.gallery {
+    position: relative;
+    column-count: 4;
+    column-gap: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.box {
+    position: relative;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    transform: translate(0, 0) rotateX(0deg) rotateY(0deg);
+    margin: 20px 10px;
+    page-break-inside: avoid;
+    perspective: 512px;
+    transition: 0.3s ease-out;
+}
+
+.box img {
+    width: calc(100% + 50px);
+    height: calc(100% + 50px);
+    pointer-events: none;
+    transition: 0.3s ease-out;
+}
+
+.box:hover img {
+    transform: scale(1.1);
+}
+
+.box > *:not(img) {
+    position: absolute;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translate3d(-50%, 50%, 0);
+    text-align: center;
+    color: white;
+    z-index: 10;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.box:hover > *:not(img) {
+    opacity: 1;
+    transform: translate3d(-50%, 50%, 125px);
+}
+
+.box h1 {
+    bottom: 170px;
+    transition-delay: 0.1s;
+}
+
+.box p {
+    bottom: 130px;
+    width: 70%;
+    font-size: 14px;
+    transition-delay: 0.25s;
+}
+
+.box a {
+    text-decoration: none;
+    bottom: 100px;
+    width: initial;
+    padding: 7px 14px;
+    background: linear-gradient(currentColor 0 0) var(--p, 50%) 100% /
+        var(--d, 10%) 2px no-repeat;
+    transition: 0.3s, background-position 0.3s 0.3s,
+        opacity 0.5s 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.5s 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.box a:hover {
+    --d: 100%;
+    --p: 0%;
+    transition: 0.3s, background-size 0.3s 0.3s;
+}
+
+@media (max-width: 781px) {
+    body {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 482px) {
+    body {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 385px) {
+    body {
+        column-count: 1;
+    }
+}
