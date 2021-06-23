@@ -93,35 +93,36 @@ body {
     position: absolute;
     left: 50%;
     transform-style: preserve-3d;
-    transform: translate3d(-50%, 50%, 0);
+    transform: translate3d(-50%, -50%, 0);
     text-align: center;
     color: white;
     z-index: 10;
     width: 100%;
     opacity: 0;
+    font-size: 14px;
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .box:hover > *:not(img) {
     opacity: 1;
-    transform: translate3d(-50%, 50%, 125px);
+    transform: translate3d(-50%, -50%, 50px);
 }
 
 .box h1 {
-    bottom: 170px;
+    font-size: 1.5em;
+    top: 20%;
     transition-delay: 0.1s;
 }
 
 .box p {
-    bottom: 130px;
+    top: 50%;
     width: 70%;
-    font-size: 14px;
     transition-delay: 0.25s;
 }
 
 .box a {
     text-decoration: none;
-    bottom: 100px;
+    top: 80%;
     width: initial;
     padding: 7px 14px;
     background: linear-gradient(currentColor 0 0) var(--p, 50%) 100% /
@@ -138,19 +139,33 @@ body {
 }
 
 @media (max-width: 781px) {
-    body {
+    .gallery {
         column-count: 3;
     }
 }
 
+@media (max-width: 735px) {
+    .box > *:not(img) {
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 482px) {
-    body {
+    .gallery {
         column-count: 2;
     }
 }
 
 @media (max-width: 385px) {
-    body {
+    .gallery {
         column-count: 1;
+    }
+
+    .box > *:not(img) {
+        font-size: 14px;
+    }
+
+    .box h1 {
+        font-size: 2em;
     }
 }

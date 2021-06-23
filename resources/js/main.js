@@ -11,7 +11,6 @@ boxes.forEach((box) => {
 
         let degX = (mouseY / halfHeight) * -maxDeg + "deg";
         let degY = (mouseX / halfWidth) * maxDeg + "deg";
-        console.log(degX, degY);
         box.setAttribute(
             "style",
             `transform: perspective(512px) rotateX(${degX}) rotateY(${degY});`
@@ -29,8 +28,4 @@ boxes.forEach((box) => {
         box.removeAttribute("style");
         box.querySelector("img").removeAttribute("style");
     });
-});
-
-addEventListener("mousemove", (e) => {
-    // console.log(e);
 });
